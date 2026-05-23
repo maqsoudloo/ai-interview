@@ -27,3 +27,50 @@ If FFmpeg is not installed on your system, you can install it using Chocolatey. 
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('[https://community.chocolatey.org/install.ps1](https://community.chocolatey.org/install.ps1)'))
+
+Once Chocolatey is installed, install FFmpeg:
+
+PowerShell
+choco install ffmpeg
+
+🔧 Installation & Setup
+Clone the repository:
+
+Bash
+   git clone [https://github.com/YOUR_USERNAME/ai-interview.git](https://github.com/YOUR_USERNAME/ai-interview.git)
+   cd ai-interview
+Install the required packages:
+
+Bash
+   pip install -r requirements.txt
+Set Up Your OpenAI API Key:
+Create a keys.py file manually in the root directory or use the following command prompt shortcut (replace API_KEY with your actual token):
+
+Bash
+   python -c "with open('keys.py', 'w', encoding='utf-8') as f: f.write('OPENAI_API_KEY=\"API_KEY\"')"
+🎬 Running the Assistant
+To run the main application with optimized live API support (highly recommended for multi-language accuracy and lightning-fast response times):
+
+Bash
+python main.py --api
+Upon initiation, the system will begin capturing your microphone input and speaker output in real-time. The --api flag ensures that the advanced Whisper API and GPT engine process the transcriptions smoothly, tailoring the responses strictly to the custom paragraph constraints defined in the system prompts.
+
+⚙️ Custom Prompt Engineering
+The behavior of this assistant relies entirely on the abstract system_instruction prompt configured inside the source code. It has been stripped of personal data and ready for custom deployment:
+
+Python
+system_instruction = """You are a highly intelligent and expert AI Interview Assistant...
+=== CRITICAL FORMATTING & STYLE RULES ===
+1. NO BULLET POINTS: Output responses exclusively in short paragraphs.
+2. CONVERSATIONAL TONE: Write exactly how a confident professional speaks.
+..."""
+⚠️ Known Limitations
+Default Audio Routing: The tool is configured to listen strictly to the default microphone and speaker devices selected in your Windows system settings.
+
+API Dependency: Running with the --api flag delivers the best speed and multi-language capability but requires active OpenAI API credits.
+
+📖 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+🤝 Acknowledgements
+This tool is a derived work based on the original architecture of Ecoute. Significant modifications were introduced to advance human-computer interaction (HCI) layouts, conversational flow alignment, and strict paragraph formatting constraints necessary for real-time interview simulations.
